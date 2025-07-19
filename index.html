@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50; /* Dark blue */
-            --secondary-color: #e74c3c; /* Red */
-            --accent-color: #3498db; /* Light blue */
-            --dark-color: #34495e; /* Dark gray-blue */
-            --light-color: #ecf0f1; /* Light gray */
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --dark-color: #34495e;
+            --light-color: #ecf0f1;
             --white: #ffffff;
             --text-color: #333;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -170,7 +170,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
             height: 90vh;
@@ -362,7 +362,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('pattern.png') repeat;
+            background: url('images/pattern.png') repeat;
             opacity: 0.05;
             z-index: 0;
         }
@@ -763,6 +763,32 @@
             line-height: 1.6;
         }
 
+        .social-links-leader {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-links-leader a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .social-links-leader a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
         /* Documentaries Section */
         .documentaries-container {
             display: flex;
@@ -1041,7 +1067,7 @@
 
         /* Footer */
         footer {
-            background-color: #000; /* Changed to black as requested */
+            background-color: var(--primary-color);
             color: var(--white);
             padding: 70px 0 20px;
             position: relative;
@@ -1451,29 +1477,6 @@
                 margin: 10px 0;
             }
 
-            /* Improved admin menu for mobile */
-            .admin-menu-item {
-                position: static;
-            }
-
-            .admin-submenu {
-                position: static;
-                width: 100%;
-                box-shadow: none;
-                display: none;
-                padding: 0;
-            }
-
-            .admin-menu-item:hover .admin-submenu,
-            .admin-menu-item.active .admin-submenu {
-                display: block;
-            }
-
-            .admin-submenu a {
-                padding: 10px 15px;
-                background-color: rgba(231, 76, 60, 0.05);
-            }
-
             .hero {
                 height: 70vh;
                 margin-top: 70px;
@@ -1557,7 +1560,6 @@
             
             .admin-form-content {
                 padding: 20px;
-                width: 95%;
             }
             
             .whatsapp-float {
@@ -1593,7 +1595,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact Us</a></li>
                     <li class="admin-menu-item">
-                        <a href="#" id="adminMenuToggle">Admin <i class="fas fa-caret-down"></i></a>
+                        <a href="#">Admin <i class="fas fa-caret-down"></i></a>
                         <div class="admin-submenu">
                             <a href="#" id="loginBtn">Login</a>
                             <a href="#" id="changeLogoBtn" class="admin-option" style="display: none;">Change Logo</a>
@@ -1733,7 +1735,7 @@
                     <div class="payment-details">
                         <p><strong>Bank Name:</strong> Diamond Trust Bank</p>
                         <p><strong>Account Name:</strong> Compower Society</p>
-                        <p><strong>Account Number:</strong> 5407418003</p>
+                        <p><strong>Account Number:</strong> 5407418002</p>
                         <p><strong>Branch:</strong> Nyahururu</p>
                     </div>
                 </div>
@@ -1745,7 +1747,7 @@
                         <p>2. Select "Lipa na M-PESA"</p>
                         <p>3. Select "Pay Bill"</p>
                         <p>4. Enter Business Number: <strong>516600</strong></p>
-                        <p>5. Enter Account Number: <strong>5407418003</strong></p>
+                        <p>5. Enter Account Number: <strong>5407418002</strong></p>
                         <p>6. Enter the Amount</p>
                         <p>7. Enter your M-PESA PIN</p>
                         <p>8. Confirm and send</p>
@@ -1840,7 +1842,11 @@
                 <p>Organizations that support our mission and work with us</p>
             </div>
             <div class="partners-container" id="partnersContainer">
-                <!-- Partners will be dynamically loaded here -->
+                <img src="images/partner1.png" alt="Partner 1" class="partner-logo">
+                <img src="images/partner2.png" alt="Partner 2" class="partner-logo">
+                <img src="images/partner3.png" alt="Partner 3" class="partner-logo">
+                <img src="images/partner4.png" alt="Partner 4" class="partner-logo">
+                <img src="images/partner5.png" alt="Partner 5" class="partner-logo">
             </div>
             <div class="partner-prompt">
                 <p>Interested in partnering with us? Contact us via email or WhatsApp:</p>
@@ -2263,16 +2269,6 @@
             }
         });
 
-        // Admin Menu Toggle for Mobile
-        const adminMenuToggle = document.getElementById('adminMenuToggle');
-        adminMenuToggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const adminMenuItem = this.closest('.admin-menu-item');
-                adminMenuItem.classList.toggle('active');
-            }
-        });
-
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2367,13 +2363,8 @@
             }
         });
 
-        // JSONBin.io configuration for persistent storage
-        const JSONBIN_BIN_ID = '687b902d4ae1c55985089ec9'; // Replace with your actual bin ID
-        const JSONBIN_API_KEY = '$2a$10$Vh83rXhqYcCVropXIvSuK.PUiVQi.NWofO1W1wxt/UUag.uCUKvuK'; // Replace with your actual API key
-        const JSONBIN_URL = `https://api.jsonbin.io/v3/b/687b902d4ae1c55985089ec9${JSONBIN_BIN_ID}`;
-        
-        // Default website data
-        const defaultWebsiteData = {
+        // Initialize website data from localStorage or defaults
+        let websiteData = JSON.parse(localStorage.getItem('compowerWebsiteData')) || {
             logo: 'images/logo.jpg',
             events: [
                 {
@@ -2404,6 +2395,16 @@
                     time: "10:00 AM - 5:00 PM",
                     description: "A full-day workshop for young people focusing on leadership, career development, and life skills.",
                     image: "images/event3.jpg",
+                    photos: []
+                },
+                {
+                    id: 4,
+                    title: "Charity Visit",
+                    date: "2025-08-23",
+                    location: "Nyandarua",
+                    time: "9:00 AM - 5:00 PM",
+                    description: "Charity Visit to Heavens Eye Chidrens Home",
+                    image: "images/event2.jpg",
                     photos: []
                 }
             ],
@@ -2471,118 +2472,13 @@
                     description: "See how our menstrual health program is keeping girls in school across rural Kenya.",
                     url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
                 }
-            ],
-            partners: [
-                {
-                    id: 1,
-                    name: "Partner 1",
-                    logo: "images/partner1.png"
-                },
-                {
-                    id: 2,
-                    name: "Partner 2",
-                    logo: "images/partner2.png"
-                },
-                {
-                    id: 3,
-                    name: "Partner 3",
-                    logo: "images/partner3.png"
-                },
-                {
-                    id: 4,
-                    name: "Partner 4",
-                    logo: "images/partner4.png"
-                },
-                {
-                    id: 5,
-                    name: "Partner 5",
-                    logo: "images/partner5.png"
-                }
             ]
         };
 
-        // Initialize website data from localStorage or defaults
-        let websiteData = JSON.parse(localStorage.getItem('compowerWebsiteData')) || defaultWebsiteData;
-
-        // Save data to localStorage and server
-        async function saveWebsiteData() {
-            // Save to localStorage
+        // Save data to localStorage
+        function saveWebsiteData() {
             localStorage.setItem('compowerWebsiteData', JSON.stringify(websiteData));
-            
-            try {
-                // Save to JSONBin.io
-                const response = await fetch(JSONBIN_URL, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': JSONBIN_API_KEY
-                    },
-                    body: JSON.stringify(websiteData)
-                });
-                
-                if (!response.ok) {
-                    console.error('Failed to save data to server');
-                    // You might want to implement a retry mechanism here
-                } else {
-                    console.log('Data saved successfully to server');
-                }
-            } catch (error) {
-                console.error('Error saving data to server:', error);
-                // Implement fallback storage or error handling here
-            }
-            
-            // Broadcast a storage event to update other tabs
-            localStorage.setItem('compowerWebsiteDataUpdated', Date.now().toString());
         }
-
-        // Load data from JSONBin.io (server-side storage)
-        async function loadWebsiteData() {
-            try {
-                const response = await fetch(JSONBIN_URL, {
-                    headers: {
-                        'X-Master-Key': JSONBIN_API_KEY
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.record) {
-                        websiteData = data.record;
-                        localStorage.setItem('compowerWebsiteData', JSON.stringify(websiteData));
-                        renderAllContent();
-                        return true;
-                    }
-                }
-                console.error('Failed to load data from server, using local data');
-                // Fallback to localStorage if server fails
-                const localData = JSON.parse(localStorage.getItem('compowerWebsiteData'));
-                if (localData) {
-                    websiteData = localData;
-                    renderAllContent();
-                }
-                return false;
-            } catch (error) {
-                console.error('Error loading data from server:', error);
-                // Fallback to localStorage if server fails
-                const localData = JSON.parse(localStorage.getItem('compowerWebsiteData'));
-                if (localData) {
-                    websiteData = localData;
-                    renderAllContent();
-                }
-                return false;
-            }
-        }
-
-        // Listen for storage events to update the page when data changes in another tab
-        window.addEventListener('storage', function(event) {
-            if (event.key === 'compowerWebsiteDataUpdated') {
-                const updatedData = JSON.parse(localStorage.getItem('compowerWebsiteData'));
-                if (updatedData) {
-                    websiteData = updatedData;
-                    renderAllContent();
-                }
-            }
-        });
 
         // Load logo from saved data
         document.getElementById('websiteLogo').src = websiteData.logo;
@@ -2625,40 +2521,30 @@
         });
 
         // Change Logo Form
-        document.getElementById('logoForm').addEventListener('submit', async function(e) {
+        document.getElementById('logoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const logoFile = document.getElementById('logoUpload').files[0];
             const logoUrl = document.getElementById('logoUrl').value;
             
             if (logoFile) {
                 const reader = new FileReader();
-                reader.onload = async function(e) {
+                reader.onload = function(e) {
                     websiteData.logo = e.target.result;
                     document.getElementById('websiteLogo').src = e.target.result;
-                    try {
-                        await saveWebsiteData();
-                        alert('Logo updated successfully! Changes will be visible to all visitors.');
-                        document.getElementById('changeLogoForm').classList.remove('active');
-                        document.getElementById('logoForm').reset();
-                        document.getElementById('logoPreview').style.display = 'none';
-                    } catch (error) {
-                        console.error('Error saving logo:', error);
-                        alert('Failed to save logo. Please try again.');
-                    }
+                    saveWebsiteData();
+                    alert('Logo updated successfully!');
+                    document.getElementById('changeLogoForm').classList.remove('active');
+                    document.getElementById('logoForm').reset();
+                    document.getElementById('logoPreview').style.display = 'none';
                 }
                 reader.readAsDataURL(logoFile);
             } else if (logoUrl) {
                 websiteData.logo = logoUrl;
                 document.getElementById('websiteLogo').src = logoUrl;
-                try {
-                    await saveWebsiteData();
-                    alert('Logo updated successfully! Changes will be visible to all visitors.');
-                    document.getElementById('changeLogoForm').classList.remove('active');
-                    this.reset();
-                } catch (error) {
-                    console.error('Error saving logo:', error);
-                    alert('Failed to save logo. Please try again.');
-                }
+                saveWebsiteData();
+                alert('Logo updated successfully!');
+                document.getElementById('changeLogoForm').classList.remove('active');
+                this.reset();
             } else {
                 alert('Please upload a logo file or enter a valid image URL');
             }
@@ -2816,7 +2702,7 @@
         });
 
         // Event Form Submission
-        document.getElementById('eventForm').addEventListener('submit', async function(e) {
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const action = document.getElementById('eventAction').value;
@@ -2830,17 +2716,17 @@
             
             if (eventImageFile) {
                 const reader = new FileReader();
-                reader.onload = async function(e) {
+                reader.onload = function(e) {
                     eventImage = e.target.result;
-                    await saveEventData(action, eventId, eventImage);
+                    saveEventData(action, eventId, eventImage);
                 }
                 reader.readAsDataURL(eventImageFile);
             } else {
-                await saveEventData(action, eventId, eventImage);
+                saveEventData(action, eventId, eventImage);
             }
         });
 
-        async function saveEventData(action, eventId, eventImage) {
+        function saveEventData(action, eventId, eventImage) {
             const eventData = {
                 id: eventId,
                 title: document.getElementById('eventTitle').value,
@@ -2859,44 +2745,32 @@
                 if (index !== -1) {
                     websiteData.events[index] = eventData;
                 }
-            } else if (action === 'delete') {
-                websiteData.events = websiteData.events.filter(e => e.id !== eventId);
             }
             
-            try {
-                await saveWebsiteData();
-                renderEvents();
-                alert(`Event ${action === 'delete' ? 'deleted' : 'saved'} successfully! Changes will be visible to all visitors.`);
-                document.getElementById('addEventForm').classList.remove('active');
-                document.getElementById('eventForm').reset();
-                document.getElementById('eventImagePreview').style.display = 'none';
-            } catch (error) {
-                console.error('Error saving event:', error);
-                alert('Failed to save event. Please try again.');
-            }
+            saveWebsiteData();
+            renderEvents();
+            alert(`Event ${action === 'delete' ? 'deleted' : 'saved'} successfully!`);
+            document.getElementById('addEventForm').classList.remove('active');
+            document.getElementById('eventForm').reset();
+            document.getElementById('eventImagePreview').style.display = 'none';
         }
 
         // Delete Event Button
-        document.getElementById('deleteEventBtn').addEventListener('click', async function() {
+        document.getElementById('deleteEventBtn').addEventListener('click', function() {
             const eventId = parseInt(document.getElementById('existingEvent').value);
             if (confirm('Are you sure you want to delete this event?')) {
                 websiteData.events = websiteData.events.filter(e => e.id !== eventId);
-                try {
-                    await saveWebsiteData();
-                    renderEvents();
-                    alert('Event deleted successfully! Changes will be visible to all visitors.');
-                    document.getElementById('addEventForm').classList.remove('active');
-                    document.getElementById('eventForm').reset();
-                    document.getElementById('eventImagePreview').style.display = 'none';
-                } catch (error) {
-                    console.error('Error deleting event:', error);
-                    alert('Failed to delete event. Please try again.');
-                }
+                saveWebsiteData();
+                renderEvents();
+                alert('Event deleted successfully!');
+                document.getElementById('addEventForm').classList.remove('active');
+                document.getElementById('eventForm').reset();
+                document.getElementById('eventImagePreview').style.display = 'none';
             }
         });
 
         // Leader Form Submission
-        document.getElementById('leaderForm').addEventListener('submit', async function(e) {
+        document.getElementById('leaderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const action = document.getElementById('leaderAction').value;
@@ -2910,17 +2784,17 @@
             
             if (leaderImageFile) {
                 const reader = new FileReader();
-                reader.onload = async function(e) {
+                reader.onload = function(e) {
                     leaderImage = e.target.result;
-                    await saveLeaderData(action, leaderId, leaderImage);
+                    saveLeaderData(action, leaderId, leaderImage);
                 }
                 reader.readAsDataURL(leaderImageFile);
             } else {
-                await saveLeaderData(action, leaderId, leaderImage);
+                saveLeaderData(action, leaderId, leaderImage);
             }
         });
 
-        async function saveLeaderData(action, leaderId, leaderImage) {
+        function saveLeaderData(action, leaderId, leaderImage) {
             const leaderData = {
                 id: leaderId,
                 name: document.getElementById('leaderName').value,
@@ -2936,44 +2810,32 @@
                 if (index !== -1) {
                     websiteData.leaders[index] = leaderData;
                 }
-            } else if (action === 'delete') {
-                websiteData.leaders = websiteData.leaders.filter(l => l.id !== leaderId);
             }
             
-            try {
-                await saveWebsiteData();
-                renderLeaders();
-                alert(`Leader ${action === 'delete' ? 'deleted' : 'saved'} successfully! Changes will be visible to all visitors.`);
-                document.getElementById('manageLeadersForm').classList.remove('active');
-                document.getElementById('leaderForm').reset();
-                document.getElementById('leaderImagePreview').style.display = 'none';
-            } catch (error) {
-                console.error('Error saving leader:', error);
-                alert('Failed to save leader. Please try again.');
-            }
+            saveWebsiteData();
+            renderLeaders();
+            alert(`Leader ${action === 'delete' ? 'deleted' : 'saved'} successfully!`);
+            document.getElementById('manageLeadersForm').classList.remove('active');
+            document.getElementById('leaderForm').reset();
+            document.getElementById('leaderImagePreview').style.display = 'none';
         }
 
         // Delete Leader Button
-        document.getElementById('deleteLeaderBtn').addEventListener('click', async function() {
+        document.getElementById('deleteLeaderBtn').addEventListener('click', function() {
             const leaderId = parseInt(document.getElementById('existingLeader').value);
             if (confirm('Are you sure you want to delete this leader?')) {
                 websiteData.leaders = websiteData.leaders.filter(l => l.id !== leaderId);
-                try {
-                    await saveWebsiteData();
-                    renderLeaders();
-                    alert('Leader deleted successfully! Changes will be visible to all visitors.');
-                    document.getElementById('manageLeadersForm').classList.remove('active');
-                    document.getElementById('leaderForm').reset();
-                    document.getElementById('leaderImagePreview').style.display = 'none';
-                } catch (error) {
-                    console.error('Error deleting leader:', error);
-                    alert('Failed to delete leader. Please try again.');
-                }
+                saveWebsiteData();
+                renderLeaders();
+                alert('Leader deleted successfully!');
+                document.getElementById('manageLeadersForm').classList.remove('active');
+                document.getElementById('leaderForm').reset();
+                document.getElementById('leaderImagePreview').style.display = 'none';
             }
         });
 
         // Documentary Form Submission
-        document.getElementById('documentaryForm').addEventListener('submit', async function(e) {
+        document.getElementById('documentaryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const docId = Math.max(0, ...websiteData.documentaries.map(d => d.id)) + 1;
@@ -2986,20 +2848,15 @@
             };
             
             websiteData.documentaries.push(docData);
-            try {
-                await saveWebsiteData();
-                renderDocumentaries();
-                alert('Documentary added successfully! Changes will be visible to all visitors.');
-                document.getElementById('addDocumentariesForm').classList.remove('active');
-                this.reset();
-            } catch (error) {
-                console.error('Error adding documentary:', error);
-                alert('Failed to add documentary. Please try again.');
-            }
+            saveWebsiteData();
+            renderDocumentaries();
+            alert('Documentary added successfully!');
+            document.getElementById('addDocumentariesForm').classList.remove('active');
+            this.reset();
         });
 
         // Event Photos Form Submission
-        document.getElementById('eventPhotosForm').addEventListener('submit', async function(e) {
+        document.getElementById('eventPhotosForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const eventId = parseInt(document.getElementById('photoEvent').value);
@@ -3009,19 +2866,19 @@
             
             if (photoFile) {
                 const reader = new FileReader();
-                reader.onload = async function(e) {
+                reader.onload = function(e) {
                     photoUrl = e.target.result;
-                    await saveEventPhoto(eventId, photoUrl, caption);
+                    saveEventPhoto(eventId, photoUrl, caption);
                 }
                 reader.readAsDataURL(photoFile);
             } else if (photoUrl) {
-                await saveEventPhoto(eventId, photoUrl, caption);
+                saveEventPhoto(eventId, photoUrl, caption);
             } else {
                 alert('Please upload a photo or enter a valid image URL');
             }
         });
 
-        async function saveEventPhoto(eventId, photoUrl, caption) {
+        function saveEventPhoto(eventId, photoUrl, caption) {
             const event = websiteData.events.find(e => e.id === eventId);
             if (event) {
                 if (!event.photos) {
@@ -3033,16 +2890,11 @@
                     caption: caption
                 });
                 
-                try {
-                    await saveWebsiteData();
-                    alert('Photo added to event successfully! Changes will be visible to all visitors.');
-                    document.getElementById('addEventPhotosForm').classList.remove('active');
-                    document.getElementById('eventPhotosForm').reset();
-                    document.getElementById('eventPhotoPreview').style.display = 'none';
-                } catch (error) {
-                    console.error('Error saving event photo:', error);
-                    alert('Failed to save event photo. Please try again.');
-                }
+                saveWebsiteData();
+                alert('Photo added to event successfully!');
+                document.getElementById('addEventPhotosForm').classList.remove('active');
+                document.getElementById('eventPhotosForm').reset();
+                document.getElementById('eventPhotoPreview').style.display = 'none';
             } else {
                 alert('Please select a valid event');
             }
@@ -3091,6 +2943,11 @@
                         <h3>${leader.name}</h3>
                         <p class="position">${leader.position}</p>
                         <p class="bio">${leader.bio}</p>
+                        <div class="social-links-leader">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 `;
                 leadersContainer.appendChild(leaderCard);
@@ -3118,49 +2975,16 @@
             });
         }
 
-        // Render partners on the page
-        function renderPartners() {
-            const partnersContainer = document.getElementById('partnersContainer');
-            partnersContainer.innerHTML = '';
-            
-            websiteData.partners.forEach(partner => {
-                const partnerLogo = document.createElement('img');
-                partnerLogo.className = 'partner-logo';
-                partnerLogo.src = partner.logo;
-                partnerLogo.alt = partner.name;
-                partnersContainer.appendChild(partnerLogo);
-            });
-        }
-
-        // Render all dynamic content
-        function renderAllContent() {
-            renderEvents();
-            renderLeaders();
-            renderDocumentaries();
-            renderPartners();
-            document.getElementById('websiteLogo').src = websiteData.logo;
-        }
-
         // Helper function to format date
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateString).toLocaleDateString('en-US', options);
         }
 
-        // Initial load of data and render
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const loadingSuccess = await loadWebsiteData();
-                if (!loadingSuccess) {
-                    console.warn('Using fallback data after failed load');
-                    // You might want to show a warning to the user
-                }
-                renderAllContent();
-            } catch (error) {
-                console.error('Initialization error:', error);
-                // Show error message to user
-            }
-        });
+        // Initial render of dynamic content
+        renderEvents();
+        renderLeaders();
+        renderDocumentaries();
 
         // Contact Form Submission - Opens email client with form data
         document.getElementById('sendMessageBtn').addEventListener('click', function() {
