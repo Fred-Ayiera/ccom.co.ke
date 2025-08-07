@@ -2875,12 +2875,13 @@
             websiteData.events.forEach(event => {
                 const eventCard = document.createElement('div');
                 eventCard.className = 'event-card';
+                const imagePath = getLocalImagePath(event.image);
                 eventCard.innerHTML = `
                     <div class="event-date">
                         ${formatDate(event.date)}
                     </div>
                     <div class="event-img">
-                        <img src="${event.image}" alt="${event.title}">
+                        <img src="${imagePath}" alt="${event.title}">
                     </div>
                     <div class="event-info">
                         <h3>${event.title}</h3>
@@ -2902,9 +2903,10 @@
             websiteData.leaders.forEach(leader => {
                 const leaderCard = document.createElement('div');
                 leaderCard.className = 'leader-card';
+                const imagePath = getLocalImagePath(leader.image);
                 leaderCard.innerHTML = `
                     <div class="leader-img">
-                        <img src="${leader.image}" alt="${leader.name}">
+                        <img src="${imagePath}" alt="${leader.name}">
                     </div>
                     <div class="leader-info">
                         <h3>${leader.name}</h3>
@@ -2941,6 +2943,28 @@
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Helper function to handle local image paths
+        function getLocalImagePath(imagePath) {
+            // If the image is already a data URL, return it as-is
+            if (imagePath.startsWith('data:image')) {
+                return imagePath;
+            }
+            
+            // If the image is a relative path, try to load it from the local images folder
+            if (!imagePath.startsWith('http') && !imagePath.startsWith('https')) {
+                try {
+                    // Try to create a full path to the image
+                    return imagePath;
+                } catch (e) {
+                    console.error('Error loading local image:', e);
+                    return 'images/default-image.jpg'; // Fallback image
+                }
+            }
+            
+            // Return the original path (could be a URL)
+            return imagePath;
         }
 
         // Initial render of dynamic content
@@ -3002,78 +3026,6 @@
                 }
             });
         });
-
-        // Function to handle local image paths
-        function getLocalImagePath(imagePath) {
-            // If the image is already a data URL, return it as-is
-            if (imagePath.startsWith('data:image')) {
-                return imagePath;
-            }
-            
-            // If the image is a relative path, try to load it from the local images folder
-            if (!imagePath.startsWith('http') && !imagePath.startsWith('https')) {
-                try {
-                    // Try to create a full path to the image
-                    return imagePath;
-                } catch (e) {
-                    console.error('Error loading local image:', e);
-                    return 'images/default-image.jpg'; // Fallback image
-                }
-            }
-            
-            // Return the original path (could be a URL)
-            return imagePath;
-        }
-
-        // Modify the render functions to use local image paths
-        function renderEvents() {
-            const eventsContainer = document.getElementById('eventsContainer');
-            eventsContainer.innerHTML = '';
-            
-            websiteData.events.forEach(event => {
-                const eventCard = document.createElement('div');
-                eventCard.className = 'event-card';
-                const imagePath = getLocalImagePath(event.image);
-                eventCard.innerHTML = `
-                    <div class="event-date">
-                        ${formatDate(event.date)}
-                    </div>
-                    <div class="event-img">
-                        <img src="${imagePath}" alt="${event.title}">
-                    </div>
-                    <div class="event-info">
-                        <h3>${event.title}</h3>
-                        <p>${event.description}</p>
-                        <p><strong>Location:</strong> ${event.location}</p>
-                        <p><strong>Time:</strong> ${event.time}</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                `;
-                eventsContainer.appendChild(eventCard);
-            });
-        }
-
-        function renderLeaders() {
-            const leadersContainer = document.getElementById('leadersContainer');
-            leadersContainer.innerHTML = '';
-            
-            websiteData.leaders.forEach(leader => {
-                const leaderCard = document.createElement('div');
-                leaderCard.className = 'leader-card';
-                const imagePath = getLocalImagePath(leader.image);
-                leaderCard.innerHTML = `
-                    <div class="leader-img">
-                        <img src="${imagePath}" alt="${leader.name}">
-                    </div>
-                    <div class="leader-info">
-                        <h3>${leader.name}</h3>
-                        <p class="position">${leader.position}</p>
-                        <p class="bio">${leader.bio}</p>
-                    </div>
-                `;
-                leadersContainer.appendChild(leaderCard);
-            });
-        }
     </script>
 </body>
 </html>
